@@ -24,6 +24,7 @@ To import the module to your application
 let SoduxChild = require("sodux-child");
 ```
 
+
 ## How to use?
 
 A Sodux Child instance can be initiated in the WebApp by:
