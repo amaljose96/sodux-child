@@ -1,0 +1,24 @@
+{
+  "name": "sodux-child",
+  "version": "0.0.1",
+  "description": "Sodux child module to connect with Sodux Mothership",
+  "main": "sodux-child.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amaljose96/sodux-child.git"
+  },
+  "keywords": [
+    "sodux",
+    "sockets",
+    "websockets"
+  ],
+  "author": "Amal Jose",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/amaljose96/sodux-child/issues"
+  },
+  "homepage": "https://github.com/amaljose96/sodux-child#readme"
+}

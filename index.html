@@ -1,0 +1,57 @@
+<head>
+    <title>Sodux - Swarm</title>
+</head>
+<body> <script src="sodux-child.js"></script>
+   
+    <h1>Sodux Swarm</h1>
+    <p>Enter your name:</p>
+    <input id="nameEntry">
+    <button id="setName">Set Name</button>
+    <p>Enter space:</p>
+    <input id="spaceEntry">
+    <button id="setSpace">Set Space</button>
+    <h3>My Name : <span id="myName"></span></h3>
+    <h3>Space : <span id="spaceName">default</span></h3>
+
+
+    <p id="chatWindow"></p>
+    <input id="messageBox"></input>
+    <button id="sender">Send</button>
+    <script>
+
+        let soduxChild = new SoduxChild ("ws://localhost:12345",null,{debug:true});
+
+        soduxChild.listen(newState => {
+            document.getElementById("chatWindow").innerHTML=newState.messages.map(m=>{
+                return m.name+":"+m.text
+            }).join("<br>");
+            document.getElementById("myName").innerHTML = newState.childInfo.name;
+            document.getElementById("spaceName").innerHTML = newState.childInfo.space;
+        })
+        document.getElementById("setName").onclick=function(){
+            soduxChild.dispatch({
+                type:"SET_INFO",
+                info:{
+                    name:document.getElementById("nameEntry").value
+                }
+            });
+        }
+        document.getElementById("setSpace").onclick = function(){
+            soduxChild.dispatch({
+                type:"CHANGE_SPACE",
+                space:document.getElementById("spaceEntry").value
+            })
+        }
+
+        document.getElementById("sender").onclick=function (){
+            let text = document.getElementById("messageBox").value;
+            soduxChild.dispatch({
+                type:"ADD_MESSAGE",
+                text
+            });
+            
+        }
+
+
+    </script>
+</body>
